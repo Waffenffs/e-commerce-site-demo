@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Karla:wght@400;600;700&family=Oswald:wght@200&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 2px 20px;
+    border-bottom: thin solid black;
+}
+
+.cart {
+    font-size: 2em;
+}
+
+.websiteTitle {
+    font-family: 'Gloock', 'Karla', sans-serif;
+    letter-spacing: 2.5px;
+    font-size: 2em;
+}
+
+.homeRedirectContainer {
+    margin-left: auto;
+}
+
+.homeRedirect {
+    font-family: 'Source Sans Pro', 'Karla', sans-serif;
+    font-weight: 400;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mainImgContainer {
+    width: 100%;
+}
+
+.mainItemImage {
+    width: 100%;
+}
+
+.bigTextContainer {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    border: thin solid black;
+    border-right: none;
+    border-left: none;
+    margin-top: -4px;
+    width: 100%;
+    padding: 15px 0px;
+    margin-bottom: 10px;
+}
+
+.bigText {
+    font-family: 'Oswald';
+    margin: 0;
+    letter-spacing: 10px;
+}
+
+.productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 10px;
+    margin-bottom: 30px;
+}
+
+.arrow {
+    margin: 0;
+    padding: 0;
+    width: 5em;
+}
+
+.arrowPointer {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.productImageContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.productCardContainer {
+    border: solid black thin;
+    width: 80vh;
+    padding: 30px 0px;
+}
+
+.productImage {
+    width: 110%;
+}
+
+.productTitleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.productPageName {
+    font-family: 'Gloock', sans-serif;
+    font-size: 2em;
+    letter-spacing: 4px;
+}
+
+.clothingPageContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.transactionContainer {
+    background-color: whitesmoke;
+    padding: 30px;
+}
+
+.clothingPageContainer {
+    width: 100%;
+}
+
+.transactionContainer {
+    width: 50%;
+}
+
+.clothingPageImageContainer {
+    width: 50%;
+}
+
+.clothingPageImage {
+    width: 100%;
+}
+
+.priceTag {
+    font-weight: 400;
+    margin-top: -10px;
+    font-size: 30px;
+    color: darkgrey;
+}
+
+.clothingPara {
+    font-size: 1.5em;
+    line-height: 28px;
+    font-weight: 400;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+
+.checkout {
+    position: absolute;
+    bottom: 1px;
+    background-color: #2d2e2b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    padding: 10px 120px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout:focus {
+    outline: none;
+}
+
+.checkout:hover {
+    filter: brightness(90%);
+}
+
+.cartItems {
+    padding: 0 10px;
+}
+
+.cartItem {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    border: solid thin black;
+    border-radius: 10px;
+}
+
+.cartItemPrice {
+    margin-top: -20px;
+    font-weight: 400;
+}
+
+
+.cartItemImageContainer {
+    width: 6em;
+}
+
+.cartItem-image {
+    width: 100%;
+}
+
+.cartTitleContainer {
+    border-bottom: solid thin black;
+    margin: 0 40%;
+}
+
+.cartTitle {
+    font-family: 'Gloock';
+    letter-spacing: 2px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.checkoutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    padding: 0 30px;
+    border-top: solid thin black;
+    width: 100%;
+    bottom: 10px;
+}
+
+.total {
+    font-size: 2em;
+    font-family: 'Karla';
+    font-weight: 400;
+}
+
+.checkoutButton {
+    background-color: #2d2e2b;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    padding: 10px 200px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.checkoutButton:hover {
+    filter: brightness(90%);
+}
+
+.emptyCartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.emptyCart {
+    font-weight: 400;
+    letter-spacing: 2px;
+}
