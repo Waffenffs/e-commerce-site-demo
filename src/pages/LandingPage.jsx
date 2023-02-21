@@ -1,7 +1,13 @@
 import '../App.css'
 import ProductCard from '.././components/ProductCard'
+import { initializeApp} from 'firebase/app'
+import { firebaseConfig } from '../firebaseConfig'
+
+// initialize firebase
+export const app = initializeApp(firebaseConfig)
 
 export default function LandingPage({ items }){
+
     const products = items.map((item) => {
         return <ProductCard 
         productName={item.product_name}

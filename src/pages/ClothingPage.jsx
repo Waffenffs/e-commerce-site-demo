@@ -1,9 +1,12 @@
 import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../App.css'
 
-export default function ClothingPage({ handleClick }){
+export default function ClothingPage({ handleClick, loggedIn }){
     const location = useLocation()
     const state = location.state
+
+    console.log(loggedIn)
 
     return(
         <div className="clothingPageContainer">
@@ -20,10 +23,13 @@ export default function ClothingPage({ handleClick }){
                 <div className="clothingParaContainer">
                     <p className="clothingPara">{state.description}</p>
                 </div>
-
-                <div className="buttonContainer">
-                    <button className="checkout" onClick={() => handleClick(state)}>Add to Cart</button>
-                </div>
+                <Link to={loggedIn ? '' : '/login'} className="cartLink">
+                    <div className="buttonContainer">
+                        <button className="checkout" onClick={() => handleClick(state)}>
+                            Add to Cart
+                        </button>
+                    </div>
+                </Link>
             </div>
         </div>
     )

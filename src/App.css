@@ -18,6 +18,17 @@ nav {
     font-size: 2em;
 }
 
+.redirectContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lionIcon {
+    font-size: 4em;
+    margin-right: 3px;
+}
+
 .homeRedirectContainer {
     margin-left: auto;
 }
@@ -25,11 +36,27 @@ nav {
 .homeRedirect {
     font-family: 'Source Sans Pro', 'Karla', sans-serif;
     font-weight: 400;
+    border: solid thin white;
+    padding: 0 10px;
+    transition: 0.3s;
 }
 
-.link {
+.homeRedirect:hover {
+    border: solid thin black;
+    border-radius: 10px;
+}
+
+.link, .homeLink {
     text-decoration: none;
     color: inherit;
+    border: solid thin white;
+    transition: 0.3s;
+}
+
+.link:hover {
+    border: thin solid black;
+    border-radius: 10px;
+    padding: 0 10px;
 }
 
 .mainImgContainer {
@@ -252,4 +279,138 @@ nav {
 .emptyCart {
     font-weight: 400;
     letter-spacing: 2px;
+}
+
+.sideBar {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.navSideBar {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    background-color: #2d2e2b;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    bottom: 75vh;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.navSideBarLogin {
+    border-bottom: thin solid white;
+    padding-bottom: 15px;
+}
+
+.sideBarLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.topLoginPart {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginPageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.loginPageForm {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.loginPageInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.loginPageInput {
+    font-size: 1.2em;
+    border: none;
+    background-color: #f7f5f7;
+    width: 100%;
+}
+
+.loginPageInput:focus {
+    outline: none;
+}
+
+.inputContainer {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f7f5f7;
+    width: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer:focus {
+    outline-color: red;
+}
+
+.eye {
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+.loginPageButton {
+    background-color: #4d7edf;
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.3s;
+}
+
+.loginPageButton:hover {
+    filter: brightness(90%);
+}
+
+.loginLion {
+    font-size: 3em;
+}
+
+.forgotPassword {
+    color: #74737c;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: -20px;
+}
+
+.greetUser {
+    display: flex;
+    justify-content: center;
+}
+
+.favoritesTitle {
+    font-weight: 300;
+}
+
+.favoriteTitleContainer {
+    margin: 0 30px;
+    margin-top: 50px;
+    border-bottom: solid thin black;
+}
+
+.cartLink {
+    text-decoration: none;
+    color: inherit;
 }
