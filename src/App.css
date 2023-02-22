@@ -171,15 +171,16 @@ nav {
     font-weight: 400;
 }
 
-.buttonContainer {
+.bottomSection {
     display: flex;
-    justify-content: center;
-    border: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    position: absolute;
+    bottom: 0px;
 }
 
 .checkout {
-    position: absolute;
-    bottom: 1px;
     background-color: #2d2e2b;
     color: white;
     border: none;
@@ -188,6 +189,11 @@ nav {
     padding: 10px 120px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.bookMark {
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
 .checkout:focus {
@@ -200,6 +206,7 @@ nav {
 
 .cartItems {
     padding: 0 10px;
+    margin-bottom: 300px;
 }
 
 .cartItem {
@@ -245,8 +252,11 @@ nav {
     position: fixed;
     padding: 0 30px;
     border-top: solid thin black;
+    border-bottom: none;
     width: 100%;
-    bottom: 10px;
+    bottom: 0px;
+    background-color: #2d2e2b;
+    color: white;
 }
 
 .total {
@@ -256,8 +266,8 @@ nav {
 }
 
 .checkoutButton {
-    background-color: #2d2e2b;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     font-size: 1.5em;
     padding: 10px 200px;
@@ -286,7 +296,7 @@ nav {
     cursor: pointer;
 }
 
-.navSideBar {
+.navSideBarLoggedOut, .navSideBarLoggedIn {
     display: flex;
     gap: 20px;
     flex-direction: column;
@@ -295,9 +305,17 @@ nav {
     padding: 10px;
     position: absolute;
     right: 0px;
-    bottom: 75vh;
+    bottom: 70vh;
     border-radius: 10px;
     font-weight: 700;
+}
+
+.navSideBarLoggedOut {
+    bottom: 75vh;
+}
+
+.logout {
+    cursor: pointer;
 }
 
 .navSideBarLogin {
@@ -391,8 +409,15 @@ nav {
     color: #74737c;
     display: flex;
     justify-content: center;
-    cursor: pointer;
     margin-top: -20px;
+}
+
+.forgot {
+    cursor: pointer;
+}
+
+.forgot:hover {
+    filter: brightness(120%);
 }
 
 .greetUser {
@@ -413,4 +438,36 @@ nav {
 .cartLink {
     text-decoration: none;
     color: inherit;
+}
+
+.favoriteItemsContainer {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.favoriteItemContainer {
+    margin-top: 30px;
+    border: solid thin black;
+    padding: 0 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.favoriteItemImageContainer {
+    width: 19vh;
+}
+
+.visit {
+    margin-left: auto;
+}
+
+.profileVisit {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: center;
 }

@@ -57,7 +57,7 @@ export default function LoginPage(){
                     </div>
                     <button className="loginPageButton">Sign in</button>
                     <div className="forgotPassword">
-                        <h3>Forgot your password?</h3>
+                        <h3 className="forgot">Forgot your password?</h3>
                     </div>
                 </div>
             </form>

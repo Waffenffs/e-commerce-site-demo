@@ -1,4 +1,6 @@
-export default function ProfilePage({ user }){
+import FavoriteItemCard from "../components/FavoriteItemCard"
+
+export default function ProfilePage({ user, favorites}){
     /* 
     PROFILE PAGE
     1. Add favorites
@@ -6,7 +8,11 @@ export default function ProfilePage({ user }){
     3. Lets go baby
     */
 
-    console.log(user.email)
+    const favoriteItems = favorites.map((favoriteItem) => {
+        return(
+            <FavoriteItemCard favoriteItem={favoriteItem} />
+        )
+    })
 
     return(
         <div className="profilePageContainer">
@@ -19,6 +25,9 @@ export default function ProfilePage({ user }){
             <div className="favoritesSection">
                 <div className="favoriteTitleContainer">
                     <h1 className="favoritesTitle">My Favorites</h1>
+                </div>
+                <div className="favoriteItemsContainer">
+                    {favoriteItems}
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 import { CiShoppingCart } from 'react-icons/ci'
 import { GiLion } from 'react-icons/gi'
 import LandingPage from './pages/LandingPage'
@@ -12,23 +12,21 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './pages/LoginPage'
 import './App.css'
 import ProfilePage from './pages/ProfilePage'
+import { app } from './pages/LandingPage'
+import { getFirestore} from 'firebase/firestore'
+import { setDoc, doc, getDocs, getDoc, collection} from 'firebase/firestore'
+import { signOut } from 'firebase/auth'
+
+// initialize firestore
+const db = getFirestore(app)
 
 export default function App(){
-  /* 
-    ######################
-    #       TODOS        #
-    ######################
 
-    1. Add a user authentication (through Firebase Auth)
-    2. Utilize a database to store user information, such as carts, favorites (through Firebase Firestore)
-    3. Add some animations
-    4. Congrats. You have something worthy to show in your portfolio.
-  */
-
-  const [displayBar, setDisplayBar] = useState(false)
-  const [cartItems, setCartItems] = useState([])
-  const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState(null)
+  const [displayBar, setDisplayBar] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [cartItems, setCartItems] = useState([])
+  const [favoriteItems, setFavoriteItems] = useState([])
   const [items, setItems] = useState([
     {
       id: nanoid(),
@@ -47,6 +45,10 @@ export default function App(){
     onAuthStateChanged(auth, (user) => {
       if(user){
         // logged in
+        setDoc(doc(db, "users", `${user.email.split('@')[0]}`), {
+          status: 'working'
+        })
+
         setUser(user)
         setLoggedIn(true)
       } else {
@@ -56,6 +58,16 @@ export default function App(){
     })
   }, [])
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(user){
+      setDoc(doc(db, "users", `${user.email.split('@')[0]}`), {
+        cart: cartItems,
+      })
+    }
+  }, [cartItems])
+
   const handleClick = (thisState) => {
     const clothingObject = {
       id: thisState.id,
@@ -63,8 +75,30 @@ export default function App(){
       price: thisState.price,
       product_image: thisState.secondary_images[0]
     }
-
+    
     setCartItems(prevState => [...prevState, clothingObject])
+
+  }
+
+  const handleFavorites = (thisState) => {
+    const clothingObject = {
+      id: thisState.id,
+      product_name: thisState.product_name,
+      price: thisState.price,
+      product_image: thisState.secondary_images[0]
+    }
+
+    let clothingObjectAlreadyFavorited = false
+
+    favoriteItems.map((item) => {
+      if(item.id === clothingObject.id){
+        clothingObjectAlreadyFavorited = true
+      }
+    })
+    
+    if(clothingObjectAlreadyFavorited === false){
+      setFavoriteItems(prevState => [...prevState, clothingObject])
+    }
   }
 
   const resetCart = () => {
@@ -88,33 +122,40 @@ export default function App(){
         </Link>
         <HiOutlineBars3 className='sideBar' onClick={() => setDisplayBar(prevState => !prevState)}/>
           {displayBar && 
-            <div className='navSideBar'>
+            <>
               {!loggedIn && 
-              <>
+              <div className='navSideBarLoggedOut'>
                 <Link className='sideBarLink' to="/login" onClick={() => setDisplayBar(false)}>
                   <div className="navSideBarLogin">Login</div>
                 </Link>
                 <div className="navSideBarContact">Contact</div>
-              </>
+              </div>
               }
               {loggedIn &&
-              <>
+              <div className='navSideBarLoggedIn'>
                 <Link className='sideBarLink' to="/profile" onClick={() => setDisplayBar(false)}>
                   <div className="navSideBarLogin">Profile</div>
                 </Link>
                 <div className="navSideBarContact">Contact</div>
-              </>
+                <div className="navSideBarContact logout" onClick={() => {
+                  signOut(auth)
+                
+                  setTimeout(() => {
+                    navigate('/')
+                  }, [])
+                }}>Logout</div>
+              </div>
               }
-            </div>
+            </>
           }
       </nav> 
 
       <Routes>
         <Route path='/' element={ <LandingPage items={items} /> } />
         <Route path='/cart' element={ <CartPage cart={cartItems} resetCart={resetCart} /> } />
-        <Route path='/clothing/*' element={ <ClothingPage handleClick={handleClick} loggedIn={loggedIn} /> }/>
+        <Route path='/clothing/*' element={ <ClothingPage handleClick={handleClick} loggedIn={loggedIn} handleFavorites={handleFavorites} /> }/>
         <Route path='/login' element={ <LoginPage />} />
-        <Route path='/profile' element={ <ProfilePage user={user} /> } />
+        <Route path='/profile' element={ <ProfilePage user={user} favorites={favoriteItems} /> } />
       </Routes>
     </>
   )
